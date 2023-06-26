@@ -11,3 +11,26 @@ form.addEventListener("submit", (e) => {
     })
     .catch((error) => alert("something went wrong!"));
 });
+
+const nameEl = document.getElementById("name");
+const regName = /^[a-zA-Z ]+$/;
+
+nameEl.addEventListener("focusout", (e) => {
+  if (!regName.test(e.target.value)) {
+    e.target.setCustomValidity("please enter a valid name");
+  } else {
+    e.target.setCustomValidity("");
+  }
+});
+
+nameEl.oninput = (e) => {
+  e.target.setCustomValidity("");
+};
+
+// const messageEl = document.getElementById("message");
+
+// messageEl.addEventListener("focusout", (e) => {
+//   if (e.target.value.length < 16) {
+//     e.target.setCustomValidity("message requires atleast 16 characters");
+//   }
+// });
